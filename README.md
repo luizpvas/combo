@@ -1,8 +1,8 @@
 # Combo
 
 Combo is a full stack component library for Rails inspired by Liveview and Livewire. The goal of this library is to
-provide better a abstraction over traditional MVC for building admin and backoffice applications along with a rich
-collection of components and helpers.
+provide a better abstraction over traditional MVC for building admin and backoffice applications along with a rich
+collection of components and view helpers.
 
 1. [Defining components](#defining-components)
 2. [State management](#state-management)
@@ -20,8 +20,8 @@ collection of components and helpers.
 
 # Defining components
 
-Components encapsulate HTML and backend actions into a single unit. Views work similar to Rails' ERB templates, and
-actions work similar to controllers actions backed by a route.
+Components encapsulate views and backend actions into a single unit. Views work similar to Rails' ERB templates, and
+actions work similar to controllers actions, except you don't have to add a route entry.
 
 ```ruby
 class MyApp::Admin::UserDetails < Combo::Component
