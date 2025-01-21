@@ -5,16 +5,17 @@ provide a better abstraction over traditional MVC for building admin and backoff
 collection of components and view helpers.
 
 1. [Defining components](#defining-components)
-2. [State management](#state-management)
+2. [Using components](#using-components)
+3. [State management](#state-management)
    - [Request params](#request-params)
    - [Attributes](#attributes)
    - [Action payload](#action-payload)
-3. Action responses
+4. Action responses
    - Clear forms
    - Flash
    - Redirect
    - Reload
-4. Helpers and components library
+5. Helpers and components library
    - Tables
    - Date picker
 
@@ -60,6 +61,28 @@ class MyApp::Admin::UserDetails < Combo::Component
 
     client.flash_success "Password reset email sent"
   end
+end
+```
+
+# Using components
+
+You can use components by either rendering them in a regular rails view or mounting them in a route. To render a
+component in a view call the `render` method passing the component and attributes. For example, in
+`myapp/admin/users/index.html.erb`:
+
+```erb
+<h1>User <%= user.id %></h1>
+
+<div>
+  <%= render MyApp::Admin::UserDetails, user: user %>
+</div>
+```
+
+To render a component as a full page from a route, add the following entry to your `routes.rb`:
+
+```ruby
+Rails.application.routes.draw do
+  get '/users/:user_id', to: MyApp::Admin::UserDetails
 end
 ```
 
