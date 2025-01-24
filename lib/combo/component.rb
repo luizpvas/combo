@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Combo
-  class Component
+  class Component < ActionController::Base
     class << self
       def attribute(name, type=nil)
         if attributes_types.key?(name)
@@ -20,6 +20,10 @@ module Combo
       def attributes_types
         @attributes_types ||= {}
       end
+
+      def view(template)
+        @view = Combo::View::Inline.new(template)
+      end
     end
 
     def initialize(**attributes)
@@ -30,6 +34,10 @@ module Combo
       end
 
       @attributes = attributes
+    end
+
+    def render
+      self.class.instance_variable_get(:@view).render(self)
     end
   end
 end

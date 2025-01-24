@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Combo::AttributeTest < ActiveSupport::TestCase
+class Combo::Component::AttributeTest < ActiveSupport::TestCase
   test "attribute initialization" do
     component_class = Class.new(Combo::Component) do
       attribute :attr1
