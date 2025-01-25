@@ -22,7 +22,7 @@ module Combo
       end
 
       def view(template)
-        @view = Combo::View::Inline.new(template)
+        @view = View::Inline.new(template)
       end
     end
 

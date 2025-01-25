@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Combo::View
+module Combo::Component::View
   class Inline
     attr_reader :template
 

@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Combo::Component::RenderInlineTest < ActiveSupport::TestCase
+class Combo::Component::View::InlineTest < ActiveSupport::TestCase
   test "inline rendering without component methods and helpers" do
     component_class = Class.new(Combo::Component) do
       view <<~HTML

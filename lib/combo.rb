@@ -4,7 +4,7 @@ require "combo/engine"
 require "combo/unknown_attribute_error"
 
 require "combo/component/action"
-require "combo/view/inline"
+require "combo/component/view/inline"
 
 module Combo
   # Your code goes here...
