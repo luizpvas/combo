@@ -37,7 +37,22 @@ module Combo
     end
 
     def render
+      if first_render_call?
+        add_component_instance_methods_as_view_helpers
+      end
+
       self.class.instance_variable_get(:@view).render(self)
     end
+
+    private
+      def first_render_call?
+        return false if defined?(@first_render_call)
+
+        @first_render_call = true and return true
+      end
+
+      def add_component_instance_methods_as_view_helpers
+        self.class.helper_method(self.class.instance_methods(false))
+      end
   end
 end
