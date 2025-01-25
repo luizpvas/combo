@@ -28,25 +28,23 @@ actions work similar to controllers actions, except you don't have to add a rout
 class MyApp::Admin::UserDetails < Combo::Component
   attribute :user, User
 
-  def view
-    inline <<~ERB
-      <%= cb_panel do %>
-        <%= cb_table do %>
-          <%= cb_row "Email", user.email %>
-          <%= cb_row "Registration date", user.registration_date %>
-        <% end %>
+  view <<~ERB
+    <%= cb_panel do %>
+      <%= cb_table do %>
+        <%= cb_row "Email", user.email %>
+        <%= cb_row "Registration date", user.registration_date %>
+      <% end %>
 
-        <%= cb_dropdown do %>
-          <%= cb_button "Actions" %>
+      <%= cb_dropdown do %>
+        <%= cb_button "Actions" %>
 
-          <%= cb_menu do %>
-            <%= cb_menu_item "Unlock login", to: action(:unlock_login) %>
-            <%= cb_menu_item "Send password reset email", to: action(:send_password_reset_email) %>
-          <% end %>
+        <%= cb_menu do %>
+          <%= cb_menu_item "Unlock login", to: action(:unlock_login) %>
+          <%= cb_menu_item "Send password reset email", to: action(:send_password_reset_email) %>
         <% end %>
       <% end %>
-    ERB
-  end
+    <% end %>
+  ERB
 
   def unlock_login
     user.unlock_login!
