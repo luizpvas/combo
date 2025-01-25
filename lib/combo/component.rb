@@ -26,6 +26,8 @@ module Combo
       end
     end
 
+    attr_reader :attributes
+
     def initialize(**attributes)
       attributes.each do |attribute_name, _value|
         if !self.class.attributes_types.key?(attribute_name)
@@ -34,6 +36,10 @@ module Combo
       end
 
       @attributes = attributes
+    end
+
+    def action(method_name)
+      Action.build(component: self, method_name:)
     end
 
     def render
