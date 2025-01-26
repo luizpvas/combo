@@ -14,6 +14,10 @@ module Combo
           def #{name}
             @attributes[:#{name}]
           end
+
+          def #{name}=(value)
+            @attributes[:#{name}] = value
+          end
         CODE
       end
 
