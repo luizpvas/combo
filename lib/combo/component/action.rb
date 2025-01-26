@@ -1,48 +1,46 @@
 # frozen_string_literal: true
 
-class Combo::Component
-  class Action
-    attr_reader :component_class, :method_name, :attributes
+class Combo::Component::Action
+  attr_reader :component_class, :method_name, :attributes
 
-    class << self
-      def decode(encoded_value)
-        serialized_value = message_verifier.verify(encoded_value)
-        action_arguments = ActiveJob::Arguments.deserialize(serialized_value)
+  class << self
+    def decode(encoded_value)
+      serialized_value = message_verifier.verify(encoded_value)
+      action_arguments = ActiveJob::Arguments.deserialize(serialized_value)
 
-        new(**action_arguments.to_h)
-      end
-
-      def build(component:, method_name:)
-        new(
-          component_class: component.class,
-          attributes: component.attributes,
-          method_name:,
-        )
-      end
-
-      def message_verifier
-        Rails.application.message_verifier(:combo_component_action)
-      end
+      new(**action_arguments.to_h)
     end
 
-    def initialize(component_class:, attributes:, method_name:)
-      @component_class = component_class
-      @method_name = method_name
-      @attributes = attributes
+    def build(component:, method_name:)
+      new(
+        component_class: component.class,
+        attributes: component.attributes,
+        method_name:,
+      )
     end
 
-    def encode
-      serialized = ActiveJob::Arguments.serialize({ component_class:, method_name:, attributes: })
-
-      self.class.message_verifier.generate(serialized)
+    def message_verifier
+      Rails.application.message_verifier(:combo_component_action)
     end
+  end
 
-    def ==(other)
-      inspect == other.inspect
-    end
+  def initialize(component_class:, attributes:, method_name:)
+    @component_class = component_class
+    @method_name = method_name
+    @attributes = attributes
+  end
 
-    def inspect
-      "#<#{self.class.name} #{component_class}##{method_name} [#{attributes.keys.inspect}]>"
-    end
+  def encode
+    serialized = ActiveJob::Arguments.serialize({ component_class:, method_name:, attributes: })
+
+    self.class.message_verifier.generate(serialized)
+  end
+
+  def ==(other)
+    inspect == other.inspect
+  end
+
+  def inspect
+    "#<#{self.class.name} #{component_class}##{method_name} [#{attributes.keys.inspect}]>"
   end
 end
