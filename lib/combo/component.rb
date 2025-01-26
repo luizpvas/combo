@@ -26,9 +26,11 @@ module Combo
       end
     end
 
-    attr_reader :attributes
+    attr_reader :uuid, :attributes
 
     def initialize(**attributes)
+      @uuid = SecureRandom.uuid
+
       attributes.each do |attribute_name, _value|
         if !self.class.attributes_types.key?(attribute_name)
           raise Combo::UnknownAttributeError.new(self.class.name, attribute_name)
@@ -36,6 +38,10 @@ module Combo
       end
 
       @attributes = attributes
+    end
+
+    def dom_id
+      @uuid
     end
 
     def action(method_name)
@@ -48,6 +54,10 @@ module Combo
       end
 
       self.class.instance_variable_get(:@view).render(self)
+    end
+
+    def browser
+      @browser ||= Browser.new(self)
     end
 
     private
