@@ -1,8 +1,8 @@
 # Combo
 
 Combo is a full stack component library for Rails inspired by Liveview and Livewire. The goal of this library is to
-provide a better abstraction over traditional MVC for building admin and backoffice applications along with a rich
-collection of components and view helpers.
+provide a rich collection of components and view helpers and better abstractions over traditional MVC for building
+admin/backoffice apps.
 
 1. [Defining components](#defining-components)
 2. [Using components](#using-components)
@@ -39,17 +39,17 @@ class MyApp::Admin::UserDetails < Combo::Component
         <%= cb_button "Actions" %>
 
         <%= cb_menu do %>
-          <%= cb_menu_item "Unlock login", to: action(:unlock_login) %>
-          <%= cb_menu_item "Send password reset email", to: action(:send_password_reset_email) %>
+          <%= cb_menu_item "Unlock login", action(:unlock_login) %>
+          <%= cb_menu_item "Send password reset email", action(:send_password_reset_email) %>
         <% end %>
       <% end %>
     <% end %>
   ERB
 
   def unlock_login
-    user.unlock_login!
+    user.unlock!
 
-    client.flash_success "Login unlocked"
+    browser.flash_success "Login unlocked"
   end
 
   def send_password_reset_email
@@ -57,7 +57,7 @@ class MyApp::Admin::UserDetails < Combo::Component
 
     UserMailer.password_reset(user, token).deliver_now
 
-    client.flash_success "Password reset email sent"
+    browser.flash_success "Password reset email sent"
   end
 end
 ```
@@ -72,7 +72,7 @@ component in a view call the `render` method passing the component and attribute
 <h1>User <%= user.id %></h1>
 
 <div>
-  <%= render MyApp::Admin::UserDetails, user: user %>
+  <%= MyApp::Admin::UserDetails.render(user: user) %>
 </div>
 ```
 
