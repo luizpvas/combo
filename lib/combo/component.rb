@@ -47,8 +47,12 @@ class Combo::Component < ActionController::Base
     @uuid
   end
 
-  def action(method_name)
+  def build_action(method_name)
     Action.build(component: self, method_name:)
+  end
+
+  def action(method_name)
+    build_action(method_name).url
   end
 
   def render
