@@ -55,16 +55,20 @@ class Combo::Component < ActionController::Base
     build_action(method_name).url
   end
 
-  def render
+  def render_view_to_string
     if first_render_call?
       add_component_instance_methods_as_view_helpers
     end
 
-    self.class.instance_variable_get(:@view).render(self)
+    self.class.instance_variable_get(:@view).render_to_string(self)
   end
 
   def browser
     @browser ||= Browser.new(self)
+  end
+
+  def action_missing(_action)
+    render html: render_view_to_string
   end
 
   private

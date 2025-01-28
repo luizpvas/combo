@@ -21,6 +21,7 @@ admin/backoffice apps.
    - [`cb_navbar`](#cb_navbar)
    - [`cb_navbar_item`](#cb_navbar_item)
    - [`cb_spacer`](#cb_spacer)
+   - [`cb_table`](#cb_table)
 
 # Defining components
 

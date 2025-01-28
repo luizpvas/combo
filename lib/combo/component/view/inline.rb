@@ -8,7 +8,7 @@ module Combo::Component::View
       @template = template
     end
 
-    def render(component)
+    def render_to_string(component)
       component.render_to_string(inline: @template)
     end
   end
