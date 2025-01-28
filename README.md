@@ -16,8 +16,11 @@ admin/backoffice apps.
    - Redirect
    - Reload
 5. Helpers and components library
-   - Tables
-   - Date picker
+   - [`cb_header`](#cb_header)
+   - [`cb_brand`](#cb_brand)
+   - [`cb_navbar`](#cb_navbar)
+   - [`cb_navbar_item`](#cb_navbar_item)
+   - [`cb_spacer`](#cb_spacer)
 
 # Defining components
 
@@ -101,3 +104,7 @@ Rails.application.routes.draw do
   get '/payments/:payment_id', to: MyApp::PaymentDetails
 end
 ```
+
+# Helpers and components library
+
+### `cb_header`
