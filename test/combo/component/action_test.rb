@@ -30,6 +30,6 @@ class Combo::Component::ActionTest < ActiveSupport::TestCase
   test "action url" do
     component = Dummy.new
 
-    assert_match /\/combo\/component\/action\?encoded=[A-Za-z0-9]+/, component.action(:do_something)
+    assert_match /\/combo\/components\/actions\/executions\?encoded=[A-Za-z0-9]+/, component.action(:do_something)
   end
 end

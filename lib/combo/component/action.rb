@@ -36,8 +36,9 @@ class Combo::Component::Action
     self.class.message_verifier.generate(serialized)
   end
 
+
   def url
-    Combo::Engine.routes.url_helpers.component_action_path(encoded: encode)
+    Combo::Engine.routes.url_helpers.component_action_executions_path(encoded: encode)
   end
 
   def ==(other)
