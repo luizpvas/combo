@@ -9,7 +9,7 @@ module Combo::Component::View
     end
 
     def render_to_string(component)
-      component.render_to_string(inline: @template)
+      component.render_to_string(inline: @template, layout: "combo/application")
     end
   end
 end

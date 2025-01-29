@@ -2,8 +2,6 @@
 
 class Admin::GithubUsers::Index < Combo::Component
   view <<~ERB
-    <%= cb_link "New user", Admin::GithubUsers::New.route %>
-
     <%= cb_table github_users %>
   ERB
 

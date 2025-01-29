@@ -29,7 +29,7 @@ Components encapsulate views and backend actions into a single unit. Views work 
 actions work similar to controllers actions, except you don't have to add a route entry.
 
 ```ruby
-class MyApp::Admin::UserDetails < Combo::Component
+class Admin::UserDetails < Combo::Component
   attribute :user, User
 
   view <<~ERB
@@ -76,7 +76,7 @@ component in a view call the `render` method passing the component and attribute
 <h1>User <%= user.id %></h1>
 
 <div>
-  <%= MyApp::Admin::UserDetails.render(user: user) %>
+  <%= render MyApp::Admin::UserDetails, user: user %>
 </div>
 ```
 

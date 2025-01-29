@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Combo</title>
+  <title><%= @page_title || "Combo" %></title>
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <%= yield :head %>
 
-  <%= stylesheet_link_tag    "combo/application", media: "all" %>
+  <%= stylesheet_link_tag "combo/application", media: "all" %>
+  <%= javascript_include_tag "combo/application", type: "module" %>
 </head>
 <body>
 

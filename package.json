@@ -1,0 +1,19 @@
+{
+  "name": "combo",
+  "version": "0.0.1",
+  "description": "Combo is a full stack component library for Rails inspired by Liveview and Livewire.",
+  "scripts": {
+    "build:js": "esbuild app/javascript/combo/application.js --bundle --sourcemap --format=esm --outdir=app/assets/builds/combo --public-path=/assets/combo",
+    "build:css": "npx @tailwindcss/cli -i ./app/assets/stylesheets/combo/application.css -o ./app/assets/builds/combo/application.css --watch"
+  },
+  "author": "Luiz Vasconcellos",
+  "license": "MIT",
+  "dependencies": {
+    "@alpinejs/csp": "^3.14.8"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.2",
+    "@tailwindcss/cli": "^4.0.1",
+    "tailwindcss": "^4.0.1"
+  }
+}
