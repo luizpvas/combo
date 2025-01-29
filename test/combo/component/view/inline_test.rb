@@ -12,7 +12,7 @@ class Combo::Component::View::InlineTest < ActiveSupport::TestCase
 
     component = component_class.new
 
-    assert_equal "<div>Hello, world!</div>", component.render.squish
+    assert_equal "<div>Hello, world!</div>", component.render_view_to_string.squish
   end
 
   test "inline rendering with rails helpers" do
@@ -24,7 +24,7 @@ class Combo::Component::View::InlineTest < ActiveSupport::TestCase
 
     component = component_class.new
 
-    assert_equal "Value $10.00", component.render.squish
+    assert_equal "Value $10.00", component.render_view_to_string.squish
   end
 
   test "inline rendering with component methods" do
@@ -40,6 +40,6 @@ class Combo::Component::View::InlineTest < ActiveSupport::TestCase
 
     component = component_class.new
 
-    assert_equal "Hello, world!", component.render.squish
+    assert_equal "Hello, world!", component.render_view_to_string.squish
   end
 end
