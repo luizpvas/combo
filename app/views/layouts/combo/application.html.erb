@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= @page_title || "Combo" %></title>
+  <head>
+    <title><%= @page_title || "Combo" %></title>
 
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= yield :head %>
+    <%= stylesheet_link_tag "combo/application", media: "all" %>
+    <%= javascript_include_tag "combo/application", type: "module" %>
+  </head>
 
-  <%= stylesheet_link_tag "combo/application", media: "all" %>
-  <%= javascript_include_tag "combo/application", type: "module" %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body>
+    <%= cb_page do %>
+      <%= yield %>
+    <% end %>
+  </body>
 </html>
